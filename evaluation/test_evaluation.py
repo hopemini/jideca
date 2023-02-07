@@ -100,7 +100,7 @@ def run(data_name, c_num, _iter):
     save_csv_file(data_name, result_dict, _iter)
 
 if __name__ == "__main__":
-    for _iter in range(15):
+    for _iter in range(10):
         run("jideca_b10g01re_34", "34", _iter)
         run("jideca_b10g01se_34", "34", _iter)
         run("jideca_b10g02re_34", "34", _iter)
