@@ -8,6 +8,7 @@ $ tar xzvf data_processing.tar.gz
 ```
 
 ## Create train and test dataset
+(We already upload dataset. Please, check [code](https://github.com/hopemini/jideca/tree/main/jideca/data).)
 If necessary, change **num_workers** (line 28 and 40) and **batch_size** (line 50) in data_processing.py.
 The default values are 8 and 2400, respectively.
 ```
