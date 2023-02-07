@@ -1,0 +1,13 @@
+.DS_Store
+.vs
+.vscode
+*.pyc
+*.vcproj
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vsp
+*~
+.*.sw*
+.sw*
+
