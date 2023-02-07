@@ -26,18 +26,19 @@ data/test_se_34.pkl
 ```
 
 ## Train
-If necessary, change **num_workers** (line 130) and **batch_size** (line 60) in train.py.
-The default values are 8 and 2400, respectively.
+If necessary, change **num_workers** (line 137) and **batch_size** (line 67) in train.py.
+The default values are 64 and 2400, respectively.
 ```
 option:
 -t: data types [real, semmantic_annotations]
 -c: number of classes (default: 34)
--e: number of epochs
+-e: number of epochs (default: 5000)
+-gid: GPU id (default: 0)
 -r: resume
--js: use JS Divergence
+-js: use JS Divergence (use alignment loss)
 -beta: hyperparameter for reconstruction term
 -gamma: hyperpapameter for alignment term
---off_scheduling
+-l : hyperparameter for lambda
 ```
 
 ```
@@ -64,9 +65,52 @@ $ cat train.sh
 
 echo 'jideca semantic_annotations training..'
 python train.py -t semantic_annotations -gid 0 -e 2500 -js --off_scheduling
+
+## DEC
+#echo 'dec re training..'
+#python train.py -t real -gid 0 -e 2500 -l 1 -beta 0  --off_scheduling -c 23
+
+#echo 'dec se training..'
+#python train.py -t semantic_annotations -gid 0 -e 2500 -l 1 -beta 0  --off_scheduling -c 23
+
+#echo 'dec dnn training..'
+#python train.py -t real -gid 0 -e 2500 -l 0 -beta 0  --off_scheduling -c 23
+
+## IDEC
+#echo 'idec re training..'
+#python train.py -t real -gid 0 -e 2500 -l 1 -beta 1  --off_scheduling -c 23
+
+#echo 'idec se training..'
+#python train.py -t semantic_annotations -gid 0 -e 2500 -l 1 -beta 1  --off_scheduling -c 23
+
+#echo 'idec dnn training..'
+#python train.py -t real -gid 0 -e 2500 -l 0 -beta 1  --off_scheduling -c 23
 ```
 
 Modify train.sh to suit your experiment and run it.
 ```
 . ./train.sh
+```
+
+## Evaluation
+```
+cd ../evaluation
+```
+Please, change proper number and names in the test_evaluation.py.
+```
+103     for _iter in range(10):
+104         run("jideca_b10g01re_34", "34", _iter)
+105         run("jideca_b10g01se_34", "34", _iter)
+106         run("jideca_b10g02re_34", "34", _iter)
+107         run("jideca_b10g02se_34", "34", _iter)
+108         run("jideca_b10g05re_34", "34", _iter)
+109         run("jideca_b10g05se_34", "34", _iter)
+110         run("jideca_b10g1re_34", "34", _iter)
+111         run("jideca_b10g1se_34", "34", _iter)
+112         run("jideca_b10g10re_34", "34", _iter)
+113         run("jideca_b10g10se_34", "34", _iter)
+```
+Then,
+```
+$ . ./test_evaluation.sh
 ```
