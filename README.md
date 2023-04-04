@@ -1,5 +1,15 @@
 # JIDECA
 This repository contains source code for paper [JIDECA: Jointly Improved Deep Embedded Clustering for Android activity](https://ieeexplore.ieee.org/abstract/document/10066814)
+```
+@inproceedings{choi2023jideca,
+  title={JIDECA: Jointly Improved Deep Embedded Clustering for Android activity},
+  author={Choi, Sungmin and Seo, Hyeon-Tae and Han, Yo-Sub},
+  booktitle={2023 IEEE International Conference on Big Data and Smart Computing (BigComp)},
+  pages={105--112},
+  year={2023},
+  organization={IEEE}
+}
+```
 
 ## Data processing files
 Download [Link](https://drive.google.com/file/d/1wacGwcTHUPWZ-c9mouq6AVUepagiVKQo/view?usp=sharing) and extract it.
