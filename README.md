@@ -1,5 +1,5 @@
 # JIDECA
-Jointly Improved Deep Embedded Clustering for Android activity
+This repository contains source code for paper [JIDECA: Jointly Improved Deep Embedded Clustering for Android activity](https://ieeexplore.ieee.org/abstract/document/10066814)
 
 ## Data processing files
 Download [Link](https://drive.google.com/file/d/1wacGwcTHUPWZ-c9mouq6AVUepagiVKQo/view?usp=sharing) and extract it.
