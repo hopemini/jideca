@@ -7,7 +7,8 @@ This repository contains source code for paper [JIDECA: Jointly Improved Deep Em
   booktitle={2023 IEEE International Conference on Big Data and Smart Computing (BigComp)},
   pages={105--112},
   year={2023},
-  organization={IEEE}
+  organization={IEEE},
+  doi={10.1109/BigComp57234.2023.00025}
 }
 ```
 
