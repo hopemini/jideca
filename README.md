@@ -127,3 +127,6 @@ Then,
 ```
 $ . ./test_evaluation.sh
 ```
+
+## Evaluation (including purity)
+Same process as [Evaluation](https://github.com/hopemini/jideca#evaluation), but use test_evaluation_purity.py and test_evaluation_purity.sh
