@@ -359,6 +359,9 @@ class Trainer:
                     torch.save(model.state_dict(), "./log/pth/" + types + "_jideca_" + str(epoch) + ".pth")
 
     def save_result(self, name_list, classes, k):
+        result_path = "../clustering/"
+        if not os.path.exists(result_path):
+            os.mkdir(result_path)
         result_path = "../clustering/result/"
         if not os.path.exists(result_path):
             os.mkdir(result_path)
@@ -421,8 +424,8 @@ if __name__ == "__main__":
     trainer = Trainer(num_classes, 1.0, beta, gamma)
     trainer.train(img_train_loader, text_train_loader, num_epochs)
     
-    #trainer.result(img_train_loader,
-    #               img_test_dataset,
-    #               text_train_loader,
-    #               w2v_test_data,
-    #               text_test_names)
+    trainer.result(img_train_loader,
+                   img_test_dataset,
+                   text_train_loader,
+                   w2v_test_data,
+                   text_test_names)

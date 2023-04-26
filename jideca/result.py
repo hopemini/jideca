@@ -19,7 +19,7 @@ import glob
 import json
 
 par = argparse.ArgumentParser()
-par.add_argument("-t", "--types", default="semantic", choices=["real", "semantic_annotations"],
+par.add_argument("-t", "--types", default="semantic_annotations", choices=["real", "semantic_annotations"],
                  type=str, help="Choose a data type. (real/semantic_annotations)")
 par.add_argument("-c", "--number_of_classes", default=34,
                  type=int, help="number of classes")
@@ -135,6 +135,9 @@ class Trainer:
         self.gamma = g
         
     def save_result(self, name_list, classes, k):
+        result_path = "../clustering/"
+        if not os.path.exists(result_path):
+            os.mkdir(result_path)
         result_path = "../clustering/result_" + str(args.ith) + "/"
         if not os.path.exists(result_path):
             os.mkdir(result_path)
