@@ -108,6 +108,12 @@ Modify train.sh to suit your experiment and run it.
 ```
 . ./train.sh
 ```
+output
+```
+cd ..
+cd clustering
+result_n/
+```
 
 ## Evaluation
 ```
