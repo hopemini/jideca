@@ -44,7 +44,6 @@ data/test_se_34.pkl
 ## Train
 If necessary, change **num_workers** (line 137) and **batch_size** (line 67) in train.py.
 The default values are 64 and **2400**, respectively.
-
 **Set the batch_size value to the same value used in train and test dataset.**
 ```
 option:
