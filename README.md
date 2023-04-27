@@ -133,13 +133,13 @@ Same process as [Evaluation](https://github.com/hopemini/jideca#evaluation), but
 
 ## For repeat test
 Comment out the resulting part in jideca/train.py
-'''
+```
 427 #    trainer.result(img_train_loader,
 428 #                   img_test_dataset,
 429 #                   text_train_loader,
 430 #                   w2v_test_data,
 431 #                   text_test_names)
-'''
+```
 Then, execute result.sh in jideca directory.
 
 For evaluation, use test_evaluation_iter.sh or test_evaluation_purity_iter.sh in evaluation directory.
