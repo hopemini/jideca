@@ -108,11 +108,11 @@ Modify train.sh to suit your experiment and run it.
 ```
 . ./train.sh
 ```
-output
+output (example)
 ```
 cd ..
 cd clustering
-result_n/
+result/idec_se_34_conv_dnn_jsd/
 ```
 
 ## Evaluation
@@ -121,17 +121,7 @@ cd ../evaluation
 ```
 Please, change proper number and names in the test_evaluation.py.
 ```
-103     for _iter in range(10):
-104         run("jideca_b10g01re_34", "34", _iter)
-105         run("jideca_b10g01se_34", "34", _iter)
-106         run("jideca_b10g02re_34", "34", _iter)
-107         run("jideca_b10g02se_34", "34", _iter)
-108         run("jideca_b10g05re_34", "34", _iter)
-109         run("jideca_b10g05se_34", "34", _iter)
-110         run("jideca_b10g1re_34", "34", _iter)
-111         run("jideca_b10g1se_34", "34", _iter)
-112         run("jideca_b10g10re_34", "34", _iter)
-113         run("jideca_b10g10se_34", "34", _iter)
+103     run("idec_se_34_conv_dnn_jsd", "34")
 ```
 Then,
 ```
@@ -140,3 +130,16 @@ $ . ./test_evaluation.sh
 
 ## Evaluation (including purity)
 Same process as [Evaluation](https://github.com/hopemini/jideca#evaluation), but use **test_evaluation_purity.py** and **test_evaluation_purity.sh**.
+
+## For repeat test
+Comment out the resulting part in jideca/train.py
+'''
+427 #    trainer.result(img_train_loader,
+428 #                   img_test_dataset,
+429 #                   text_train_loader,
+430 #                   w2v_test_data,
+431 #                   text_test_names)
+'''
+Then, execute result.sh in jideca directory.
+
+For evaluation, use test_evaluation_iter.sh or test_evaluation_purity_iter.sh in evaluation directory.
