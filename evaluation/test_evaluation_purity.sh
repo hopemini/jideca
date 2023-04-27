@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export PYTHONPATH=.
-python test_evaluation.py -e nmi
-python test_evaluation.py -e ari
-python test_evaluation.py -e purity
+python test_evaluation_purity.py -e nmi
+python test_evaluation_purity.py -e ari
+python test_evaluation_purity.py -e purity
 echo 'Done...'

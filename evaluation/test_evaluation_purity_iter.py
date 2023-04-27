@@ -94,11 +94,11 @@ def ARI(data_name, ground_truth_labels, clustering_result, c_num):
 
     return ("%.3f" % (ari_score))
 
-def save_csv_file(data_name, result_dict):
-    result_path = "csv/"
+def save_csv_file(data_name, result_dict, _iter):
+    result_path = "csv_" + str(_iter) + "/"
     if not os.path.exists(result_path):
         os.mkdir(result_path)
-    result_path = "csv/" + args.evaluation + "/"
+    result_path = "csv_" + str(_iter) + "/" + args.evaluation + "/"
     if not os.path.exists(result_path):
         os.mkdir(result_path)
 
@@ -107,13 +107,13 @@ def save_csv_file(data_name, result_dict):
     df = pd.DataFrame(result_dict)
     df.to_csv(result_path + data_name + ".csv", index=False)
 
-def run(data_name, c_num):
+def run(data_name, c_num, _iter):
     total_best_result[data_name] = 0.0
     result_dict = dict()
     result_dict["List"] = list()
     for i, clustering_algorithm in enumerate(clustering_algorithms):
         result_dict[clustering_algorithm] = list()
-        result_path = '../clustering/result/' + data_name + "/"
+        result_path = '../clustering/result_' + str(_iter) + '/' + data_name + "/"
 
         clustering_result = dict()
         clustering_result_temp = dict()
@@ -142,22 +142,32 @@ def run(data_name, c_num):
             result_dict[clustering_algorithm].append(
                     ARI(data_name, ground_truth_labels, clustering_result, c_num))
 
-    save_csv_file(data_name, result_dict)
+    save_csv_file(data_name, result_dict, _iter)
 
 if __name__ == "__main__":
-    run("idec_se_34_conv_dnn_jsd", "34")
-    
-    order_total_best_result = sorted(total_best_result.items(), reverse=True, key=lambda item: item[1])
+    for _iter in range(10):
+        run("jideca_b10g01re_34", "34", _iter)
+        run("jideca_b10g01se_34", "34", _iter)
+        run("jideca_b10g02re_34", "34", _iter)
+        run("jideca_b10g02se_34", "34", _iter)
+        run("jideca_b10g05re_34", "34", _iter)
+        run("jideca_b10g05se_34", "34", _iter)
+        run("jideca_b10g1re_34", "34", _iter)
+        run("jideca_b10g1se_34", "34", _iter)
+        run("jideca_b10g10re_34", "34", _iter)
+        run("jideca_b10g10se_34", "34", _iter)
 
-    fd = open("csv/" + args.evaluation  + "/total_best_result.txt", "w")
-    print("Total {} Result Length : {}".format(args.evaluation, len(total_best_result)))
-    fd.write("Total {} Result Length : {}\n".format(args.evaluation, len(total_best_result)))
+        order_total_best_result = sorted(total_best_result.items(), reverse=True, key=lambda item: item[1])
 
-    for i, items in enumerate(order_total_best_result):
-        if args.evaluation == "purity":
-            print("Top{} = {} : {}".format(i+1, items[0], "%.1f"%items[1]+"%"))
-            fd.write("Top{} = {} : {}".format(i+1, items[0], "%.1f"%items[1]+"%\n"))
-        else:
-            print("Top{} = {} : {}".format(i+1, items[0], "%.3f"%items[1]))
-            fd.write("Top{} = {} : {}".format(i+1, items[0], "%.3f"%items[1]+"\n"))
-    fd.close()
+        fd = open("csv_" + str(_iter) + "/" + args.evaluation  + "/total_best_result.txt", "w")
+        print("Total {} Result Length : {}".format(args.evaluation, len(total_best_result)))
+        fd.write("Total {} Result Length : {}\n".format(args.evaluation, len(total_best_result)))
+
+        for i, items in enumerate(order_total_best_result):
+            if args.evaluation == "purity":
+                print("Top{} = {} : {}".format(i+1, items[0], "%.1f"%items[1]+"%"))
+                fd.write("Top{} = {} : {}".format(i+1, items[0], "%.1f"%items[1]+"%\n"))
+            else:
+                print("Top{} = {} : {}".format(i+1, items[0], "%.3f"%items[1]))
+                fd.write("Top{} = {} : {}".format(i+1, items[0], "%.3f"%items[1]+"\n"))
+        fd.close()
