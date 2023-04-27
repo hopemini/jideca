@@ -140,6 +140,6 @@ Comment out the resulting part in jideca/train.py
 430 #                   w2v_test_data,
 431 #                   text_test_names)
 ```
-Then, execute result.sh in jideca directory.
+Then, use (modify and execute) result.sh in jideca directory.
 
 For evaluation, use test_evaluation_iter.sh or test_evaluation_purity_iter.sh in evaluation directory.
