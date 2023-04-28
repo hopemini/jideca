@@ -16,9 +16,9 @@ This repository contains source code for paper [JIDECA: Jointly Improved Deep Em
 -->
 
 ## Data processing files
-Download [Link](https://drive.google.com/file/d/14qcx8VKT7s2SW9u0zchDRZDFud4iYne3/view?usp=sharing) and extract it.
+Download [Link](https://drive.google.com/file/d/1okMrkBa7sUm7EENVOLlWmdN95VF3G_bc/view?usp=sharing) and extract it.
 ```
-$ tar xzvf data_processing.tar.gz
+$ unzip data_processing.zip
 ```
 
 ## Create train and test dataset
